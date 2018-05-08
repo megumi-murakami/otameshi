@@ -1,0 +1,21 @@
+h1
+  | Messages
+p#notice
+  = notice
+h3
+  | email_to
+p
+  = @message.email_to
+h3
+  | subject
+p
+  = @message.subject
+h3
+  | body
+p
+  = @message.body
+h3
+  | send_at
+p
+  = @message.send_at
+= link_to 'Back', messages_path

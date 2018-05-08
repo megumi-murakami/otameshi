@@ -1,0 +1,42 @@
+p#notice
+  = notice
+h1
+  | Messages
+p
+  | ※実際にメールとかが送られるわけではない（モデルのみ）
+table
+  thead
+    tr
+      th
+        | id
+      th
+        | email_to
+      th
+        | subject
+      th
+        | body
+      th
+        | send_at
+      th
+        | links
+  tbody
+    - @messages.each do |message|
+      tr
+        td
+          = message.id
+        td
+          = message.email_to
+        td
+          = message.subject
+        td
+          = message.body.truncate(20)
+        td
+          = message.send_at.presence || ""
+        td
+          = link_to 'Show', message
+          | ｜
+          = link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Message', new_message_path
+br
+= link_to 'index', root_path
